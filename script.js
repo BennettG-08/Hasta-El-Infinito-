@@ -32,3 +32,25 @@ button.addEventListener("click", () => {
     `;
 
 });
+
+function createPetal(){
+
+    const petal = document.createElement("div");
+
+    petal.classList.add("petal");
+
+    petal.innerHTML = "🌹";
+
+    petal.style.left = Math.random() * window.innerWidth + "px";
+
+    petal.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+    document.getElementById("petals").appendChild(petal);
+
+    setTimeout(()=>{
+        petal.remove();
+    },8000);
+
+}
+
+setInterval(createPetal,500);
