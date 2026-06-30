@@ -2,8 +2,10 @@ const button = document.getElementById("openLetter");
 const music = document.getElementById("bgMusic");
 
 button.addEventListener("click", () => {
-    
-    music.play();
+
+    if (music) {
+        music.play().catch(() => {});
+    }
 
     document.querySelector(".container").innerHTML = `
 
@@ -47,10 +49,32 @@ function createPetal(){
 
     document.getElementById("petals").appendChild(petal);
 
-    setTimeout(()=>{
+    setTimeout(() => {
         petal.remove();
-    },8000);
+    }, 8000);
 
 }
 
-setInterval(createPetal,500);
+setInterval(createPetal, 500);
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 9000);
+
+}
+
+setInterval(createHeart, 700);
