@@ -1,45 +1,52 @@
 const button = document.getElementById("openLetter");
 const music = document.getElementById("bgMusic");
 
-button.addEventListener("click", () => {
+button.addEventListener("click", async () => {
 
     if (music) {
-        music.play().catch(() => {});
+        try {
+            music.currentTime = 0;
+            await music.play();
+        } catch (e) {
+            console.log("No se pudo reproducir la música:", e);
+        }
     }
 
     document.querySelector(".container").innerHTML = `
 
         <h1>Para Ti ❤️</h1>
 
-        <p style="font-size:20px;line-height:1.8;text-align:justify;">
+        <p>
 
-        Desde que llegaste a mi vida, entendí que el amor puede sentirse en los pequeños detalles, en cada conversación, en cada sonrisa y en cada momento compartido.
+Desde que llegaste a mi vida entendí que el amor puede encontrarse en los pequeños detalles, en cada conversación, en cada sonrisa y en cada instante compartido contigo.
 
-        Gracias por existir, por ser esa persona que ilumina incluso mis días más oscuros.
+Gracias por existir y por hacer que mis días tengan un motivo para sonreír.
 
-        Quiero que recuerdes siempre que, sin importar la distancia o el tiempo, mi corazón siempre encontrará el camino hacia ti.
+Quiero que nunca olvides que sin importar el tiempo, la distancia o las dificultades, mi corazón siempre elegirá encontrarte.
 
-        Eres mi lugar favorito, mi paz, mi felicidad y el sueño más bonito que la vida pudo regalarme.
+Eres mi lugar favorito, mi paz, mi alegría y el sueño más hermoso que la vida pudo regalarme.
 
-        Si pudiera pedir un deseo, sería seguir escribiendo nuestra historia juntos... hasta el infinito. ♾️❤️
+Si pudiera pedir un solo deseo, sería seguir escribiendo nuestra historia para siempre...
+
+✨ Hasta el infinito y más allá. ♾️❤️
 
         </p>
 
         <br>
 
         <button onclick="location.reload()">
-            Volver 🌙
+            Volver ❤️
         </button>
 
     `;
 
 });
 
-function createPetal(){
+function createPetal() {
 
     const petal = document.createElement("div");
 
-    petal.classList.add("petal");
+    petal.className = "petal";
 
     petal.innerHTML = "🌹";
 
@@ -57,23 +64,23 @@ function createPetal(){
 
 setInterval(createPetal, 500);
 
-function createHeart(){
+function createHeart() {
 
     const heart = document.createElement("div");
 
-    heart.classList.add("heart");
+    heart.className = "heart";
 
     heart.innerHTML = "❤️";
 
     heart.style.left = Math.random() * window.innerWidth + "px";
 
-    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+    heart.style.animationDuration = (5 + Math.random() * 3) + "s";
 
     document.getElementById("hearts").appendChild(heart);
 
     setTimeout(() => {
         heart.remove();
-    }, 9000);
+    }, 8000);
 
 }
 
