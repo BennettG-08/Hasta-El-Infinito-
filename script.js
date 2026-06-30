@@ -1,6 +1,9 @@
 const button = document.getElementById("openLetter");
+const music = document.getElementById("bgMusic");
 
 button.addEventListener("click", () => {
+    
+    music.play();
 
     document.querySelector(".container").innerHTML = `
 
